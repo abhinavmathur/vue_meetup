@@ -17,6 +17,8 @@
 default: &default
   adapter: postgresql
   encoding: unicode
+  username: <%= ENV['database_username'] %>
+  password: <%= ENV['database_password'] %>
   # For details on connection pooling, see Rails configuration guide
   # http://guides.rubyonrails.org/configuring.html#database-pooling
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
@@ -81,5 +83,3 @@ test:
 production:
   <<: *default
   database: vue_meetup_production
-  username: vue_meetup
-  password: <%= ENV['VUE_MEETUP_DATABASE_PASSWORD'] %>
