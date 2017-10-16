@@ -1,44 +1,43 @@
-/* eslint no-console: 0 */
-// Run this example by adding <%= javascript_pack_tag 'hello_vue' %> (and
-// <%= stylesheet_pack_tag 'hello_vue' %> if you set extractStyles to true
-// in config/webpack/loaders/vue.js) to the head of your layout file,
-// like app/views/layouts/application.html.erb.
-// All it does is render <div>Hello Vue</div> at the bottom of the page.
-
 import Vue from 'vue'
-import App from '../app.vue'
+import App from './App.vue'
+import VeeValidate from 'vee-validate';
+import axios from 'axios'
+import VueRouter from 'vue-router'
+import VueAxios from 'vue-axios'
+import Vuetify from 'vuetify'
+import { routes } from './router/router'
+
+//Settings for Axios
+//----------------------------------------------------------------------
+let token = document.head.querySelector("meta[name=csrf-token]").content;
+axios.defaults.headers.common['X-CSRF-Token'] = token;
+axios.defaults.headers.common['Accept'] = 'application/json';
+//----------------------------------------------------------------------
+
+//Config
+//----------------------------------------------------------------------
+Vue.config.productionTip = false;
+//----------------------------------------------------------------------
+
+//Usage
+//----------------------------------------------------------------------
+Vue.use(VeeValidate);
+Vue.use(VueAxios, axios);
+Vue.use(VueRouter);
+Vue.use(Vuetify);
+//----------------------------------------------------------------------
+
+
+const router = new VueRouter({
+    base: '/',
+    routes: routes
+});
+
 
 document.addEventListener('DOMContentLoaded', () => {
-  document.body.appendChild(document.createElement('hello'))
-  const app = new Vue(App).$mount('hello')
-
-  console.log(app)
-})
-
-
-// The above code uses Vue without the compiler, which means you cannot
-// use Vue to target elements in your existing html templates. You would
-// need to always use single file components.
-// To be able to target elements in your existing html/erb templates,
-// comment out the above code and uncomment the below
-// Add <%= javascript_pack_tag 'hello_vue' %> to your layout
-// Then add this markup to your html template:
-//
-// <div id='hello'>
-//   {{message}}
-//   <app></app>
-// </div>
-
-
-// import Vue from 'vue/dist/vue.esm'
-// import App from './app.vue'
-//
-// document.addEventListener('DOMContentLoaded', () => {
-//   const app = new Vue({
-//     el: '#hello',
-//     data: {
-//       message: "Can you say hello?"
-//     },
-//     components: { App }
-//   })
-// })
+    new Vue({
+        el: '#vue_container',
+        router,
+        render: h => h(App)
+    })
+});
