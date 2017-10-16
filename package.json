@@ -1,14 +1,29 @@
 {
-  "name": "vue_meetup",
+  "name": "vue_blog",
   "private": true,
   "dependencies": {
     "@rails/webpacker": "^3.0.2",
+    "axios": "^0.16.2",
     "coffeescript": "1.12.7",
-    "vue": "^2.5.2",
-    "vue-loader": "^13.3.0",
-    "vue-template-compiler": "^2.5.2"
+    "css-loader": "^0.28.7",
+    "package.json": "^2.0.1",
+    "style-loader": "^0.19.0",
+    "stylus": "^0.54.5",
+    "stylus-loader": "^3.0.1",
+    "vee-validate": "^2.0.0-rc.18",
+    "vue": "^2.4.4",
+    "vue-axios": "^2.0.2",
+    "vue-loader": "^13.0.5",
+    "vue-router": "^3.0.0",
+    "vue-template-compiler": "^2.4.4",
+    "vuetify": "^0.16.1",
+    "webpack-merge": "^4.1.0"
   },
   "devDependencies": {
-    "webpack-dev-server": "^2.9.2"
+    "babel-core": "^6.26.0",
+    "babel-loader": "^7.1.2",
+    "babel-preset-env": "^1.6.0",
+    "webpack": "^3.6.0",
+    "webpack-dev-server": "^2.9.1"
   }
 }
