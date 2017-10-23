@@ -5,7 +5,7 @@ import axios from 'axios'
 import VueRouter from 'vue-router'
 import VueAxios from 'vue-axios'
 import Vuetify from 'vuetify'
-import { routes } from './router/router'
+import router from './router/router'
 
 //Settings for Axios
 //----------------------------------------------------------------------
@@ -26,12 +26,6 @@ Vue.use(VueAxios, axios);
 Vue.use(VueRouter);
 Vue.use(Vuetify);
 //----------------------------------------------------------------------
-
-
-const router = new VueRouter({
-    base: '/',
-    routes: routes
-});
 
 
 document.addEventListener('DOMContentLoaded', () => {

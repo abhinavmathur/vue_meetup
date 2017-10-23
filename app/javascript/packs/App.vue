@@ -1,6 +1,6 @@
 <template>
     <v-app id="inspire">
-        <v-navigation-drawer v-model="sideNav">
+        <v-navigation-drawer temporary v-model="sideNav">
             <v-toolbar>
                 <v-spacer></v-spacer>
                 <v-btn icon v-on:click="sideNav = !sideNav">
@@ -9,7 +9,7 @@
             </v-toolbar>
             <v-list class="pt-0" dense>
                 <v-divider></v-divider>
-                <v-list-tile v-for="item in menuItems" :key="item.title">
+                <v-list-tile v-for="item in menuItems" :key="item.title" :to="item.link">
                     <v-list-tile-action>
                         <v-icon>{{ item.icon }}</v-icon>
                     </v-list-tile-action>
@@ -24,18 +24,26 @@
                                  @click.native.stop="sideNav = !sideNav">
 
             </v-toolbar-side-icon>
-            <v-toolbar-title>Vue Meetup</v-toolbar-title>
+            <v-toolbar-title>
+                <router-link to="/" tag="span" style="cursor: pointer">
+                    Vue Meetup
+                </router-link>
+            </v-toolbar-title>
             <v-spacer></v-spacer>
-            <v-btn flat v-for="item in menuItems" :key="item.title">
+            <v-btn flat
+                   v-for="item in menuItems"
+                   :to="item.link"
+                   :key="item.title"
+                   class="hidden-sm-and-down">
                 <v-icon left>{{ item.icon }}</v-icon>
                 {{ item.title }}
             </v-btn>
         </v-toolbar>
         <main>
             <v-content>
-                <v-container-fluid>
+                <v-container fluid>
                     <router-view></router-view>
-                </v-container-fluid>
+                </v-container>
             </v-content>
         </main>
         <v-footer class="pa-3">
@@ -52,11 +60,11 @@
 				drawer: true,
 				sideNav: false,
 				menuItems: [
-					{ icon: 'supervisor_account', title: 'View Meetups' },
-					{ icon: 'room', title: 'Organize Meetup' },
-					{ icon: 'person', title: 'Profile' },
-					{ icon: 'face', title: 'Sign Up' },
-					{ icon: 'lock_open', title: 'Sign In' }
+					{ icon: 'supervisor_account', title: 'View Meetups', link: '/meetups' },
+					{ icon: 'room', title: 'Organize Meetup', link: '/meetup/new' },
+					{ icon: 'person', title: 'Profile', link: '/profile' },
+					{ icon: 'face', title: 'Sign Up', link: '/signup' },
+					{ icon: 'lock_open', title: 'Sign In', link: 'signin' }
 
 				]
 			}
