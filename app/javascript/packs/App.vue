@@ -7,11 +7,18 @@
                     <v-icon>close</v-icon>
                 </v-btn>
             </v-toolbar>
-            <v-list>
+            <v-list two-line subheader>
+                <v-subheader>General</v-subheader>
                 <v-list-tile avatar>
                     <v-list-tile-content>
                         <v-list-tile-title>Profile photo</v-list-tile-title>
                         <v-list-tile-sub-title>Change your Google+ profile photo</v-list-tile-sub-title>
+                    </v-list-tile-content>
+                </v-list-tile>
+                <v-list-tile avatar>
+                    <v-list-tile-content>
+                        <v-list-tile-title>Show your status</v-list-tile-title>
+                        <v-list-tile-sub-title>Your status is visible to everyone</v-list-tile-sub-title>
                     </v-list-tile-content>
                 </v-list-tile>
             </v-list>
@@ -21,7 +28,7 @@
                                  @click.native.stop="sideNav = !sideNav">
 
             </v-toolbar-side-icon>
-            <v-toolbar-title>Vacation Fund Blog</v-toolbar-title>
+            <v-toolbar-title>Vue Meetup</v-toolbar-title>
             <v-spacer></v-spacer>
             <v-btn flat>
                 <v-icon left>local_post_office</v-icon>
@@ -40,10 +47,12 @@
 
 <script>
     export default {
-        data: () => ({
-            drawer: true,
-            sideNav: false
-        }),
+        data: function(){
+        	return {
+        		drawer: true,
+                sideNav: false
+            }
+        },
         props: {
             source: String
         }
@@ -52,5 +61,5 @@
 
 <style lang="stylus">
     //@import "~vuetify/src/stylus/settings/_colors.styl"
-    @import '~vuetify/src/stylus/main'
+    @import 'stylus/main.styl'
 </style>
