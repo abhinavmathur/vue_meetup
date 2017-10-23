@@ -1,24 +1,20 @@
 <template>
     <v-app id="inspire">
         <v-navigation-drawer v-model="sideNav">
-            <v-toolbar dark class="purple darken-1">
+            <v-toolbar>
                 <v-spacer></v-spacer>
                 <v-btn icon v-on:click="sideNav = !sideNav">
                     <v-icon>close</v-icon>
                 </v-btn>
             </v-toolbar>
-            <v-list two-line subheader>
-                <v-subheader>General</v-subheader>
-                <v-list-tile avatar>
+            <v-list class="pt-0" dense>
+                <v-divider></v-divider>
+                <v-list-tile v-for="item in menuItems" :key="item.title">
+                    <v-list-tile-action>
+                        <v-icon>{{ item.icon }}</v-icon>
+                    </v-list-tile-action>
                     <v-list-tile-content>
-                        <v-list-tile-title>Profile photo</v-list-tile-title>
-                        <v-list-tile-sub-title>Change your Google+ profile photo</v-list-tile-sub-title>
-                    </v-list-tile-content>
-                </v-list-tile>
-                <v-list-tile avatar>
-                    <v-list-tile-content>
-                        <v-list-tile-title>Show your status</v-list-tile-title>
-                        <v-list-tile-sub-title>Your status is visible to everyone</v-list-tile-sub-title>
+                        <v-list-tile-title>{{ item.title }}</v-list-tile-title>
                     </v-list-tile-content>
                 </v-list-tile>
             </v-list>
@@ -30,13 +26,17 @@
             </v-toolbar-side-icon>
             <v-toolbar-title>Vue Meetup</v-toolbar-title>
             <v-spacer></v-spacer>
-            <v-btn flat>
-                <v-icon left>local_post_office</v-icon>
-                Posts
+            <v-btn flat v-for="item in menuItems" :key="item.title">
+                <v-icon left>{{ item.icon }}</v-icon>
+                {{ item.title }}
             </v-btn>
         </v-toolbar>
         <main>
-            <router-view></router-view>
+            <v-content>
+                <v-container-fluid>
+                    <router-view></router-view>
+                </v-container-fluid>
+            </v-content>
         </main>
         <v-footer class="pa-3">
             <v-spacer></v-spacer>
@@ -46,17 +46,25 @@
 </template>
 
 <script>
-    export default {
-        data: function(){
-        	return {
-        		drawer: true,
-                sideNav: false
-            }
-        },
-        props: {
-            source: String
-        }
-    }
+	export default {
+		data: function(){
+			return {
+				drawer: true,
+				sideNav: false,
+				menuItems: [
+					{ icon: 'supervisor_account', title: 'View Meetups' },
+					{ icon: 'room', title: 'Organize Meetup' },
+					{ icon: 'person', title: 'Profile' },
+					{ icon: 'face', title: 'Sign Up' },
+					{ icon: 'lock_open', title: 'Sign In' }
+
+				]
+			}
+		},
+		props: {
+			source: String
+		}
+	}
 </script>
 
 <style lang="stylus">
