@@ -1,8 +1,9 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 import Home from '../Home.vue'
-import Meetups from '../Meetup/Meetups.vue'
+import Meetups from '../Meetup/Meetups.vue.erb'
 import CreateMeetups from '../Meetup/CreateMeetup.vue'
+import Meetup from '../Meetup/Meetup.vue'
 import Profile from '../User/Profile.vue'
 import SignUp from '../User/SignUp.vue'
 import SignIn from '../User/SignIn.vue'
@@ -28,6 +29,12 @@ export default new Router({
 			path: '/meetup/new',
 			name: 'CreateMeetups',
 			component: CreateMeetups
+		},
+		{
+			path: '/meetup/:id',
+			name: 'Meetup',
+			component: Meetup
+
 		},
 		{
 			path: '/profile',
