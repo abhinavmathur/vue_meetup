@@ -1,0 +1,6 @@
+database_username: vacationfund
+database_password: 0522Lucknow
+
+production:
+  database_username: vacationfund
+  database_password: 0522Lucknow
