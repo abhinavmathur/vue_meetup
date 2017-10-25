@@ -1,6 +1,12 @@
 <template>
     <v-container fluid>
         <v-layout row wrap>
+            <v-flex md-12 class="mb-3">
+                <v-btn color="primary" to="/meetups">Back</v-btn>
+            </v-flex>
+        </v-layout>
+
+        <v-layout row wrap>
             <v-flex md-4>
                 <v-card>
                     <v-card-title>
