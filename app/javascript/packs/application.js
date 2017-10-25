@@ -6,6 +6,7 @@ import VueRouter from 'vue-router'
 import VueAxios from 'vue-axios'
 import Vuetify from 'vuetify'
 import router from './router/router'
+import { store } from './store/store'
 
 //Settings for Axios
 //----------------------------------------------------------------------
@@ -31,7 +32,7 @@ Vue.use(Vuetify);
 document.addEventListener('DOMContentLoaded', () => {
     new Vue({
         el: '#vue_container',
-        router,
+        router, store,
         render: h => h(App)
     })
 });
